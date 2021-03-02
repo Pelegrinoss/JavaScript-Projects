@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Event</title>
+</head>
+<body>
+    <h1>Post</h1>
+    <form action="/dogs" id="cForm">
+        <input type="text" name="username" placeholder="username">
+        <input type="text" name="comment" placeholder="comment">
+        <button onclick="barFill(1)">Post Comment</button>
+    </form>
+    <div class="bar-container">
+        <div class="bar">
+
+        </div>
+    </div>
+    <style>
+        .bar-container{
+            width: 200px;
+            height: 30px;
+            margin: 10px;
+            background-color: lightgrey;
+        }
+        .bar{
+            background-color: rgb(4, 172, 4);
+            height: 100%;
+            width: 0%;
+            }
+
+    </style>
+    <script>
+        function barFill (seconds){
+            const bar = document.querySelector('.bar');
+            let atPercent = 0;
+            const interval = setInterval(() => {
+                bar.style.width = atPercent + '%';
+                atPercent ++;
+                console.log('running at ', atPercent)
+                if (atPercent >= 100){
+                    clearInterval(interval);
+                }
+            }, (seconds * 1000)/100);
+        }
+    </script>
+
+    <h2>Comments</h2>
+    <ul id="coms">
+        <li>works</li>
+    </ul>
+    <script src="postingComments.js"></script>
+</body>
+</html>
